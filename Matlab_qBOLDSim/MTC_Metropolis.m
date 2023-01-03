@@ -64,7 +64,7 @@ SEind = 3; % hardcoded for now
 
 % Parameter Values
 p_names = {  'OEF' ; 'R2p'; 'zeta' ; 'R2t' ; 'lam0' ; 'dF'  };
-p_infer = [    0   ,   1  ,   1    ,   0   ,   1    ,   0   ];
+p_infer = [    0   ,   1  ,   1    ,   0   ,   1    ,   1   ];
 p_inits = [  0.500 ,  4.0 ,  0.100 ,  10.0 ,  0.10  ,   4   ];
 p_range = [  0.001 ,  0.0 ,  0.001 ,   5.0 ,  0.00  ,   0    ;...
              1.000 , 20.0 ,  0.500 ,  15.0 ,  1.00  ,  20   ];
@@ -317,10 +317,10 @@ if plot_results
 %             contour(c{2},c{1},n);
 
             % for surface plot
-            [nh,ch] = hist3(sample_results([prm1,prm2],:)',[cres,cres]);
+            [nh,ch] = hist3((sample_results([prm1,prm2],:))',[cres,cres]);
             
             % plot
-            surf(ch{2},ch{1},(nh));
+            surf(ch{2},ch{1},log(nh));
             colormap(flipud(magma));
             view(2); shading flat; axis square;
             hold on; box on;
